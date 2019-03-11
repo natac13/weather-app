@@ -1,0 +1,33 @@
+// @import './reset.scss';
+@import './theme.scss';
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+// ::-webkit-scrollbar {
+//   width: 0px;  /* remove scrollbar space */
+//   background: transparent;  /* optional: just make scrollbar invisible */
+// }
+
+body {
+  line-height: 1.5;
+  font-family: $font-family-normal;
+  font-size: $font-size;
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: $text;
+}
+
+a {
+  text-decoration: none;
+  color: $link-color;
+  &:hover {
+    color: $secondary-color;
+  }
+}
