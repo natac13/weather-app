@@ -4,6 +4,7 @@ import isEmpty from 'is-empty';
 import differenceInMinutes from 'date-fns/fp/differenceInMinutes';
 
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import DayCard from './components/dayCard';
 
@@ -74,28 +75,37 @@ const WeatherView = (props) => {
   console.log(position);
   console.log(weatherData);
 
-  const { city, list } = weatherData || {};
-  const { country, id, name, population } = city || {};
+  const { city = {}, list = [] } = weatherData || {};
+  const { country, id, name, population } = city;
+
+  const weatherCards = list.map((day) => {
+    return <DayCard data={day} key={day.dt} />;
+  });
+
   return (
     <main className={style.page}>
       <section className={style.wrapper}>
-        <section className={style.overview}>
-          <figure className={style.backdrop}>
-            <img src={clouds} alt="description" />
-          </figure>
-          <div className={style.currentWeather}>
-            <Typography variant="h2" component="h1">
-              12C
-            </Typography>
-            <Typography variant="subtitle1" align="center">
-              Overcast
-            </Typography>
-          </div>
-        </section>
+        {isEmpty(weatherData) ? (
+          <CircularProgress />
+        ) : (
+          <React.Fragment>
+            <section className={style.overview}>
+              <figure className={style.backdrop}>
+                <img src={clouds} alt="description" />
+              </figure>
+              <div className={style.currentWeather}>
+                <Typography variant="h2" component="h1">
+                  12C
+                </Typography>
+                <Typography variant="subtitle1" align="center">
+                  Overcast
+                </Typography>
+              </div>
+            </section>
 
-        <section className={style.forecast}>
-          <DayCard />
-        </section>
+            <section className={style.forecast}>{weatherCards}</section>
+          </React.Fragment>
+        )}
       </section>
     </main>
   );

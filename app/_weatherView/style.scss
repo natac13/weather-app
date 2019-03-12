@@ -43,3 +43,11 @@
     color: $offWhite;
   }
 }
+
+.forecast {
+  display: flex;
+  width: 70vw;
+  margin: auto;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
