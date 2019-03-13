@@ -1,0 +1,41 @@
+.day-card {
+  width: 9em;
+  max-width: 180px;
+  margin: 0;
+  height: 14em;
+  max-height: 14em;
+}
+
+.header {
+}
+
+.main {
+  position: relative;
+  padding: 0.5em;
+}
+
+.high-low {
+  &:before {
+    content: 'High';
+    position: absolute;
+    top: -0.8em;
+    left: 1.8em;
+  }
+
+  &:after {
+    content: 'Low';
+    position: absolute;
+    top: -0.8em;
+    right: 1.8em;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  align-items: center;
+}
+
+.description {
+}

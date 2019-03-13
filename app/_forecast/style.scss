@@ -1,0 +1,10 @@
+.wrapper {
+  width: auto;
+  max-width: 72vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+  justify-items: center;
+  align-items: center;
+}

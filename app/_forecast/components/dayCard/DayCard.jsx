@@ -1,12 +1,14 @@
 import React from 'react';
 import format from 'date-fns/fp/format';
 import { compose } from 'ramda';
+import { upperFirst } from 'lodash';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 
 import style from './style.scss';
@@ -37,18 +39,33 @@ const DayCard = (props) => {
   const formattedDate = format('MMM dd, yyyy', date);
   const dailyHigh = kelvinToCelsius(temp.max).toFixed(1);
   const dailyLow = kelvinToCelsius(temp.min).toFixed(1);
+  const { icon, description, main: mainDescription } = weather[0];
+  const formattedDescription = upperFirst(description);
 
   return (
     <Card className={style.dayCard}>
-      <CardHeader title={dayOfWeek} subheader={formattedDate} align="center" />
-      <CardContent align="center">
-        <Typography variant="body1">
+      <CardHeader
+        title={dayOfWeek}
+        subheader={formattedDate}
+        align="center"
+        className={style.header}
+      />
+      <CardContent align="center" className={style.main}>
+        <Typography variant="body1" className={style.highLow}>
           {dailyHigh}°C / {dailyLow}°C
         </Typography>
       </CardContent>
-      <CardContent>
-        <Typography variant="body2" align="center">
-          {weather[0].description}
+      <CardContent className={style.footer}>
+        <img
+          src={`http://openweathermap.org/img/w/${icon}.png`}
+          alt={mainDescription}
+        />
+        <Typography
+          variant="body2"
+          align="center"
+          className={style.description}
+        >
+          {formattedDescription}
         </Typography>
       </CardContent>
     </Card>

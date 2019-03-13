@@ -6,7 +6,7 @@ import differenceInMinutes from 'date-fns/fp/differenceInMinutes';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import DayCard from './components/dayCard';
+import Forecast from '../_forecast';
 
 import secret from '../secret';
 import clouds from '../../public/static/clouds.jpg';
@@ -44,7 +44,7 @@ const WeatherView = (props) => {
     const minutesBetweenStorageAndNow = differenceInMinutes(timeOfStorage, now);
 
     // when there is localData and it is within 10mins of last request, set to weatherData
-    if (!isEmpty(localData) /* && minutesBetweenStorageAndNow < 10 */) {
+    if (!isEmpty(localData) /* && minutesBetweenStorageAndNow < 60 */) {
       console.log('use stored data');
       setWeatherData(localData.weatherData);
     } else if (!isEmpty(position)) {
@@ -78,10 +78,6 @@ const WeatherView = (props) => {
   const { city = {}, list = [] } = weatherData || {};
   const { country, id, name, population } = city;
 
-  const weatherCards = list.map((day) => {
-    return <DayCard data={day} key={day.dt} />;
-  });
-
   return (
     <main className={style.page}>
       <section className={style.wrapper}>
@@ -103,7 +99,7 @@ const WeatherView = (props) => {
               </div>
             </section>
 
-            <section className={style.forecast}>{weatherCards}</section>
+            <Forecast className={style.forecast} forecastList={list} />
           </React.Fragment>
         )}
       </section>
