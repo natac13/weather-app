@@ -59,12 +59,10 @@ module.exports = (mode) => {
                   sourceMap: true,
                   camelCase: true,
                   localIdentName: '[local]__[hash:base64:9]',
-                  importLoaders: 1,
+                  importLoaders: 2,
                 },
               },
-              {
-                loader: 'postcss-loader',
-              },
+              'postcss-loader',
               {
                 loader: 'sass-loader',
                 options: {
@@ -132,6 +130,10 @@ module.exports = (mode) => {
           template: paths.template,
           filename: './index.html',
           favicon: './favicon.ico',
+        }),
+        new MiniCssExtractPlugin({
+          filename: '[name].css',
+          chunkFilename: '[id].css',
         }),
         new CopyWebpackPlugin([{ from: './public/static' }]),
         new webpack.DefinePlugin({

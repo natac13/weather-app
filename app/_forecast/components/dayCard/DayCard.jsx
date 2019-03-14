@@ -13,22 +13,15 @@ import Typography from '@material-ui/core/Typography';
 
 import style from './style.scss';
 
-const kelvinToCelsius = (temp) => temp - 273.15;
-const celsiusToKelvin = (temp) => temp + 273.15;
-const celsiusToFahrenheit = (temp) => temp * 1.8 + 32;
-const fahrenheitToCelsius = (temp) => (temp - 32) / 1.8;
-const fahrenheitToKelvin = compose(
-  celsiusToKelvin,
-  fahrenheitToCelsius
-);
-const kelvinTofahrenheit = compose(
+import {
   celsiusToFahrenheit,
-  kelvinToCelsius
-);
-
-const tempGenerator = (temp, units) => {
-  return temp;
-};
+  celsiusToKelvin,
+  kelvinToCelsius,
+  kelvinTofahrenheit,
+  fahrenheitToCelsius,
+  fahrenheitToKelvin,
+  tempGenerator,
+} from '../../../common/utils';
 
 const DayCard = (props) => {
   const {
@@ -37,8 +30,8 @@ const DayCard = (props) => {
   const date = new Date(dt * 1000);
   const dayOfWeek = format('ccc', date);
   const formattedDate = format('MMM dd, yyyy', date);
-  const dailyHigh = kelvinToCelsius(temp.max).toFixed(1);
-  const dailyLow = kelvinToCelsius(temp.min).toFixed(1);
+  const dailyHigh = kelvinToCelsius(temp.max);
+  const dailyLow = kelvinToCelsius(temp.min);
   const { icon, description, main: mainDescription } = weather[0];
   const formattedDescription = upperFirst(description);
 

@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client": "nodemon --exec \"webpack-dev-server --config ./webpack/webpack.config.js --env development\"",
+    "client": "cross-env NODE_ENV=development nodemon --exec \"webpack-dev-server --config ./webpack/webpack.config.js --env development\"",
     "start": "npm run client",
     "lint": "eslint ./app",
     "test": "jest -i --verbose --coverage",
     "build": "npm run client:build",
-    "client:build": "webpack --config ./webpack/webpack.config.js --env production --progress",
+    "client:build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.js --env production --progress",
     "heroku:deploy": "git subtree push --prefix build heroku master",
     "clean": "rimraf ./build",
     "prebuild": "npm run clean"
@@ -52,6 +52,7 @@
     "babel-plugin-ramda": "2.0.0",
     "clean-webpack-plugin": "1.0.1",
     "copy-webpack-plugin": "5.0.0",
+    "cross-env": "5.2.0",
     "css-loader": "2.1.0",
     "cssnano": "4.1.10",
     "dotenv-webpack": "1.7.0",

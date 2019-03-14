@@ -47,10 +47,6 @@ module.exports = (mode) => {
           { from: './favicon.ico' },
         ]), // copys assets, like photos to the output folder.
         new CleanWebpackPlugin(['build']),
-        new MiniCssExtractPlugin({
-          filename: '[name].css',
-          chunkFilename: '[id].css',
-        }),
         new Visualizer({ filename: './statistics.html' }),
         new BundleAnalyzerPlugin(),
         new DuplicatePackageCheckerPlugin({ verbose: true }),
