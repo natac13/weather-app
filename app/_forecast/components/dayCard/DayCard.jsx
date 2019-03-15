@@ -32,7 +32,7 @@ const DayCard = (props) => {
   const formattedDate = format('MMM dd, yyyy', date);
   const dailyHigh = kelvinToCelsius(temp.max);
   const dailyLow = kelvinToCelsius(temp.min);
-  const { icon, description, main: mainDescription } = weather[0];
+  const { icon, description, main: shortDescription } = weather[0];
   const formattedDescription = upperFirst(description);
 
   return (
@@ -51,7 +51,7 @@ const DayCard = (props) => {
       <CardContent className={style.footer}>
         <img
           src={`http://openweathermap.org/img/w/${icon}.png`}
-          alt={mainDescription}
+          alt={shortDescription}
         />
         <Typography
           variant="body2"

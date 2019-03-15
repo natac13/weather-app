@@ -9,27 +9,29 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Icon from '@material-ui/core/Icon';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 import style from './style.scss';
 
-const Navbar = props => {
-  const [anchorEl, setAnchorEl] = useState(null); // local State
-  // update Local State
-  const handleOpen = event => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+const Navbar = (props) => {
+  // const [anchorEl, setAnchorEl] = useState(null); // local State
+  // // update Local State
+  // const handleOpen = (event) => setAnchorEl(event.currentTarget);
+  // const handleClose = () => setAnchorEl(null);
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={style.wrapper}>
       <Toolbar>
-        <IconButton
+        {/* <IconButton
           className={style.menuBtn}
           color="inherit"
           aria-label="Menu"
           onClick={handleOpen}
         >
           <Icon>menu</Icon>
-        </IconButton>
-        <Menu
+        </IconButton> */}
+        {/* <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
@@ -37,10 +39,15 @@ const Navbar = props => {
           <MenuItem onClick={handleClose}>
             <Link to="/">Home</Link>
           </MenuItem>
-        </Menu>
-        <Link to="/" className={style.title}>
-          <Typography variant="h5">App Title</Typography>
-        </Link>
+        </Menu> */}
+        <Tabs>
+          <Link to="/" className={style.title}>
+            <Typography variant="h5">App Title</Typography>
+          </Link>
+          <Link to="/forecast">
+            <Typography variant="h5">14-Day Forecast</Typography>
+          </Link>
+        </Tabs>
       </Toolbar>
     </AppBar>
   );

@@ -43,7 +43,7 @@ const WeatherView = (props) => {
           <React.Fragment>
             <CurrentWeather position={position} />
 
-            <Forecast className={style.forecast} position={position} />
+            {/* <Forecast className={style.forecast} position={position} /> */}
           </React.Fragment>
         )}
       </section>

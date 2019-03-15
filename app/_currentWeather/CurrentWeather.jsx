@@ -6,6 +6,7 @@ import format from 'date-fns/fp/format';
 import { upperFirst } from 'lodash';
 /* Components */
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 /* App Files */
 import secret from '../secret';
 import { currentWeatherEndPoint } from '../common/constants';
@@ -62,8 +63,8 @@ function CurrentWeather(props) {
 
   const {
     name,
-    dt, // time of weather
-    weather = {},
+    dt = 0, // time of weather
+    weather = [{}],
     main = {},
     wind = {},
     sys = {},
@@ -77,24 +78,40 @@ function CurrentWeather(props) {
   } = weather[0];
   const { temp, pressure, humidity, temp_min, temp_max } = main;
   const { speed: windSpeed, deg: windDeg } = wind;
-  const { sunrise = 0, sunset = 0 } = sys;
+  const { sunrise = 0, sunset = 0, country } = sys;
   const formatToTime = format('h:mm a');
   const tempInCelsius = kelvinToCelsius(temp);
   const formattedDescription = upperFirst(weatherDescription);
+  const lastUpdatedTime = format('eee MMM Do @ h:mm a')(new Date(dt));
 
   return (
     <section className={style.overview}>
-      <figure className={style.backdrop}>
-        <img src={clouds} alt="description" />
-      </figure>
-      <div className={style.currentWeather}>
-        <Typography variant="h2" component="h1">
-          {tempInCelsius}°C
-        </Typography>
-        <Typography variant="subtitle1" align="center">
-          {formattedDescription}
-        </Typography>
-      </div>
+      <div className={style.backdrop} />
+
+      <Paper className={style.currentWeather}>
+        <section className={style.location}>
+          <Typography variant="h4" align="left">
+            {name}, {country}
+          </Typography>
+          <Typography variant="caption" align="left">
+            Last updated: {lastUpdatedTime}
+          </Typography>
+        </section>
+        <section className={style.temperature}>
+          <Typography variant="h2" component="h2" align="center">
+            {tempInCelsius}°C
+          </Typography>
+          <Typography variant="subtitle1" align="center">
+            {formattedDescription}
+          </Typography>
+        </section>
+        <figure className={style.weatherIcon}>
+          <img
+            src={`http://openweathermap.org/img/w/${iconID}.png`}
+            alt={shortDescription}
+          />
+        </figure>
+      </Paper>
     </section>
   );
 }
