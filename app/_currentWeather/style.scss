@@ -6,11 +6,34 @@
 }
 
 .backdrop {
-  background-image: url('../../public/static/clouds.jpg');
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.clouds {
+  background-image: url('../../public/static/Clouds.jpg');
+}
+
+.clear {
+  background-image: url('../../public/static/Clear.jpg');
+}
+
+.snow {
+  background-image: url('../../public/static/Snow.jpg');
+}
+
+.rain {
+  background-image: url('../../public/static/Rain.jpg');
+}
+
+.drizzle {
+  background-image: url('../../public/static/Rain.jpg');
+}
+
+.thunderstorm {
+  background-image: url('../../public/static/Thunderstorm.jpg');
 }
 
 .current-weather {
@@ -18,18 +41,20 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(#000, 0.63);
-  width: 27em;
-  height: 27em;
+  background: rgba(#000, 0.8);
+  width: 33em;
+  height: 33em;
   padding: 0.5em 1em;
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
 
   h1,
   h2,
   h3,
   h4,
   h5,
+  p,
   span,
   h6 {
     color: $offWhite;
@@ -47,6 +72,55 @@
 
   img {
     margin: auto;
+    margin-bottom: 2.3em;
     width: 6em;
   }
+}
+
+.extras {
+  align-self: center;
+  margin-bottom: 1em;
+  text-align: center;
+  height: 8.1em;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 5px;
+  background: rgba($accent-color, 0.2);
+  border-radius: 9px;
+}
+
+.wind,
+.windGust,
+.humidity,
+.pressure {
+  p {
+    span {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.wind {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.windGust {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+.humidity {
+  grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.pressure {
+  grid-area: 2 / 2 / span 1 / span 1;
+}
+
+.sunrise {
+  grid-area: 1 / 3 / span 1 / span 1;
+}
+
+.sunset {
+  grid-area: 2 / 3 / span 1 / span 1;
 }
