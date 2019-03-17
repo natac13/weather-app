@@ -1,17 +1,18 @@
 $text: #333;
 $primary-color: #457b9d;
 $secondary-color: #e63946;
+$secondary-color-dark: darken($secondary-color, 23%);
 $third-color: #a8dadc;
 $accent-color: #f1faee;
-$accent-dark: darken($accent-color, 12%);
+$accent-dark: darken($accent-color, 23%);
 $offWhite: #f8f8f8;
 // $link-color: #0067a5;
 $link-color: $primary-color;
 
-$color-primary: $primary-color !default;
-$color-primary-dark: darken($primary-color, 13%) !default;
-$color-accent: $secondary-color !default;
-$color-accent-dark: darken($accent-color, 13%) !default;
+// $color-primary: $primary-color !default;
+$color-primary-dark: darken($primary-color, 33%) !default;
+// $color-accent: $secondary-color !default;
+// $color-accent-dark: darken($accent-color, 13%) !default;
 
 //-- Sizing
 $unit: 0.75rem !default;

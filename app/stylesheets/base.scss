@@ -26,8 +26,11 @@ body {
 
 a {
   text-decoration: none;
-  color: $link-color;
-  &:hover {
-    color: $secondary-color;
+  color: $accent-dark;
+
+  &:hover,
+  &:focus {
+    color: $third-color;
+    text-decoration: underline;
   }
 }

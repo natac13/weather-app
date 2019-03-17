@@ -5,6 +5,7 @@ import Loadable from 'react-loadable';
 
 import Navbar from '../common/Navbar';
 import Loading from '../common/Loading';
+import Signature from '../common/Signature';
 import WeatherView from '../_weatherView';
 
 const AsyncForecast = Loadable({
@@ -43,11 +44,11 @@ const App = () => {
       setHasGeolocation(false);
     }
   }, [hasGeolocation]);
-
   return (
     <Router>
       <section className="app">
         <Navbar />
+        <Signature />
         <WeatherView>
           <Switch>
             <Route

@@ -20,7 +20,6 @@ import {
   kelvinTofahrenheit,
   fahrenheitToCelsius,
   fahrenheitToKelvin,
-  tempGenerator,
 } from '../../../common/utils';
 
 const DayCard = (props) => {
@@ -28,7 +27,7 @@ const DayCard = (props) => {
     data: { dt, speed, temp, weather },
   } = props;
   const date = new Date(dt * 1000);
-  const dayOfWeek = format('ccc', date);
+  const dayOfWeek = format('eee', date);
   const formattedDate = format('MMM dd, yyyy', date);
   const dailyHigh = kelvinToCelsius(temp.max);
   const dailyLow = kelvinToCelsius(temp.min);

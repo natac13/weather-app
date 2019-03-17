@@ -9,18 +9,26 @@ function Attribution(props) {
   const { photoId, photographer } = props;
 
   return (
-    <Typography variant="body1" className={style.wrapper}>
-      <a
-        href={`https://upslapsh.com/photos/${photoId}`}
-        className={style.photographer}
-      >
-        {photographer}
-      </a>
-      on
-      <a href="https://upslapsh.com/" className={style.upsplash}>
-        Upslapsh
-      </a>
-    </Typography>
+    <div className={style.wrapper}>
+      <Typography variant="caption">Background Photo by:</Typography>
+      <Typography variant="body1" className={style.attribution}>
+        <a
+          href={`https://unsplash.com/photos/${photoId}`}
+          className={style.photographer}
+          target="_blank"
+        >
+          {photographer}
+        </a>{' '}
+        on{' '}
+        <a
+          href="https://unsplash.com/"
+          className={style.upsplash}
+          target="_blank"
+        >
+          Unsplash
+        </a>
+      </Typography>
+    </div>
   );
 }
 

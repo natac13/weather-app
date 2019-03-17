@@ -5,9 +5,10 @@ import differenceInMinutes from 'date-fns/fp/differenceInMinutes';
 /* Components */
 import Typography from '@material-ui/core/Typography';
 import DayCard from './components/dayCard';
+import Attribution from '../common/Attribution';
 /* App Files */
 import secret from '../secret';
-import { forecastEndPoint } from '../common/constants';
+import { FORECAST_END_POINT, PHOTOS } from '../common/constants';
 /* Style */
 import style from './style.scss';
 /* Main Component */
@@ -30,7 +31,7 @@ function Forecast(props) {
       const { latitude, longitude } = position;
       axios
         .get(
-          `${forecastEndPoint}cnt=14&lat=${latitude}&lon=${longitude}&APPID=${
+          `${FORECAST_END_POINT}cnt=14&lat=${latitude}&lon=${longitude}&APPID=${
             secret.weatherApi
           }`
         )
@@ -60,9 +61,10 @@ function Forecast(props) {
   return (
     <section className={style.wrapper}>
       <Typography variant="h3" className={style.header} align="center">
-        14-Day Forecast
+        {name}, {country}
       </Typography>
       <section className={style.forecast}>{weatherCards}</section>
+      <Attribution {...PHOTOS.Forecast} />
     </section>
   );
 }

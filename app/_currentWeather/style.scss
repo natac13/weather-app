@@ -1,4 +1,4 @@
-.overview {
+.wrapper {
   position: relative;
   height: 100%;
   width: 100vw;
@@ -10,6 +10,15 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #000;
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72px !important;
+  height: 72px !important;
 }
 
 .clouds {

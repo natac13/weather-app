@@ -22,9 +22,10 @@ const kelvinTofahrenheit = compose(
 
 const degreesToCompass = (x) => {
   const degrees = parseInt(x, 10);
-  const val = Math.floor(degrees / 45 + 0.5);
   const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-  return directions[val % directions.length];
+  const divisor = 360 / (directions.length * 2);
+  const val = Math.round(degrees / divisor / 2);
+  return directions[val];
 };
 
 export {
