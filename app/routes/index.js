@@ -28,6 +28,7 @@ function NoMatch({ location }) {
 }
 
 const App = () => {
+  console.log('app', process.env.PUBLIC_URL);
   const [hasGeolocation, setHasGeolocation] = useState(true);
   const [position, setPosition] = useState({});
   // GeoLocation Setting
@@ -45,7 +46,7 @@ const App = () => {
     }
   }, [hasGeolocation]);
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <section className="app">
         <Navbar />
         <Signature />

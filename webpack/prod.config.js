@@ -37,7 +37,7 @@ module.exports = (mode) => {
       output: {
         chunkFilename: '[name].[chunkhash:6].js',
         filename: '[name].[chunkhash:6].js',
-        publicPath: '/', // where the generated static files reside. This is the project name for gh-pages
+        publicPath: '/weather-app/', // where the generated static files reside. This is the project name for gh-pages
       },
       devtool: 'nosources-source-map',
       plugins: [
@@ -48,10 +48,14 @@ module.exports = (mode) => {
         ]), // copys assets, like photos to the output folder.
         new CleanWebpackPlugin(['build']),
         new Visualizer({ filename: './statistics.html' }),
-        new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+        }),
         new DuplicatePackageCheckerPlugin({ verbose: true }),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('production'),
+          'process.env.PUBLIC_URL': JSON.stringify('/weather-app/'),
         }),
       ],
     },

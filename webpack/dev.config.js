@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 module.exports = (mode) => {
@@ -16,6 +17,11 @@ module.exports = (mode) => {
           '/api': `http://localhost:${process.env.SERVER_PORT}`,
         },
       },
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env.PUBLIC_URL': JSON.stringify('/'),
+        }),
+      ],
     },
   ]);
 };

@@ -135,7 +135,7 @@ module.exports = (mode) => {
           filename: '[name].css',
           chunkFilename: '[id].css',
         }),
-        new CopyWebpackPlugin([{ from: './public/static' }]),
+        // new CopyWebpackPlugin([{ from: './public/static' }]),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify(mode),
         }),
